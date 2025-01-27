@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Top App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_toolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginEnd="313dp"
+                    android:layout_marginBottom="11dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Back"
+                    android:src="@drawable/ic_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="TRAIN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- First Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <!-- Book Ticket -->
+                <LinearLayout
+                    android:id="@+id/bookTicketLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_train"
+                        app:tint="#4A148C" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Book\nTicket"/>
+                </LinearLayout>
+
+                <!-- My Bookings -->
+                <LinearLayout
+                    android:id="@+id/myBookingsLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_bookings"
+                        app:tint="#4CAF50" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="My\nBookings"/>
+                </LinearLayout>
+
+                <!-- PNR Enquiry -->
+                <LinearLayout
+                    android:id="@+id/pnrEnquiryLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_pnr_enquiry"
+                        app:tint="#2196F3" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="PNR\nEnquiry"/>
+                </LinearLayout>
+
+                <!-- Last Transaction -->
+                <LinearLayout
+                    android:id="@+id/lastTransactionLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_last_transaction"
+                        app:tint="#FFC107" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Last\nTransaction"/>
+                </LinearLayout>
+
+                <!-- Upcoming Journey -->
+                <LinearLayout
+                    android:id="@+id/upcomingJourneyLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_upcoming_journey"
+                        app:tint="#F44336" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Upcoming\nJourney"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Second Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="16dp">
+
+                <!-- Cancel Ticket -->
+                <LinearLayout
+                    android:id="@+id/cancelTicketLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_cancel_ticket"
+                        app:tint="#00BCD4" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Cancel\nTicket"/>
+                </LinearLayout>
+
+                <!-- File TDR -->
+                <LinearLayout
+                    android:id="@+id/fileTDRLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_file_tdr"
+                        app:tint="#FF5722" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="File\nTDR"/>
+                </LinearLayout>
+
+                <!-- Refund History -->
+                <LinearLayout
+                    android:id="@+id/refundHistoryLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_refund_history"
+                        app:tint="#E91E63" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Refund\nHistory"/>
+                </LinearLayout>
+
+                <!-- FAQ -->
+                <LinearLayout
+                    android:id="@+id/faqLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_faq"
+                        app:tint="#9C27B0" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="FAQ"/>
+                </LinearLayout>
+
+                <!-- IRCTC E-Wallet -->
+                <LinearLayout
+                    android:id="@+id/eWalletLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_wallet"
+                         app:tint="#3F51B5" />
+
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="IRCTC\nE-Wallet"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Third Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:layout_marginTop="16dp">
+
+                <!-- Chart Vacancy -->
+                <LinearLayout
+                    android:id="@+id/chartVacancyLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_chart_vacancy"
+                        app:tint="#795548" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Chart\nVacancy"/>
+                </LinearLayout>
+
+                <!-- Train Schedule -->
+                <LinearLayout
+                    android:id="@+id/trainScheduleLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_train_schedule"
+                        app:tint="#009688" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Train\nSchedule"/>
+                </LinearLayout>
+
+                <!-- Track Your Train -->
+                <LinearLayout
+                    android:id="@+id/trackTrainLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_track_train"
+                        app:tint="#FF9800" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Track\nYour Train"/>
+                </LinearLayout>
+
+                <!-- Ask Disha -->
+                <LinearLayout
+                    android:id="@+id/askDishaLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_disha"
+                        app:tint="#2196F3" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Ask Disha\n2.0"/>
+                </LinearLayout>
+
+                <!-- Delhi Metro -->
+                <LinearLayout
+                    android:id="@+id/delhiMetroLayout"
+                    style="@style/CircularServiceItem">
+                    <ImageView
+                        style="@style/CircularServiceIcon"
+                        android:src="@drawable/ic_delhi_metro"
+                        app:tint="#607D8B" />
+                    <TextView
+                        style="@style/ServiceText"
+                        android:text="Delhi\nMetro"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Deals Banner -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="24dp"
+                android:text="TODAY'S DEALS"
+                android:textSize="50dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"/>
+
+            <!-- Information Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="INFORMATION"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#333333"/>
+
+            <TextView
+                android:id="@+id/infoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Please check the arrival/departure time of booked train from www.indianrail.gov.in, NTES OR 139 for any changes. Click here for more alerts &amp; updates."
+                android:textColor="#2196F3"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

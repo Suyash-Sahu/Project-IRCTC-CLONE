@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IRCTCCLONE"
+        tools:targetApi="31">
+        <activity
+            android:name=".presentation.features.mybookings.MyBookingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.passengerdetails.PassengerAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.passengerdetails.PassengerDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.searchresults.models.TrainModels"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.searchresults.TrainAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.searchresults.SearchResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.trainstatus.models.TrainStatusModels"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.trainstatus.ScheduleAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.trainstatus.TrainStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.pnr.models.PnrModels"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.pnr.PassengerStatusAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.pnr.RecentPNRAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.pnr.PNRStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ic_visibility_on"
+            android:exported="false" />
+        <activity
+            android:name=".di.modules.NetworkModule"
+            android:exported="false" />
+        <activity
+            android:name=".data.remote.dto.TrainDto"
+            android:exported="false" />
+        <activity
+            android:name=".data.remote.api.TrainApiService"
+            android:exported="false" />
+        <activity
+            android:name=".di.modules.DatabaseModule"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.AppDatabase"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.dao.UserDao"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.dao.BookingDao"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.dao.TrainDao"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.entity.UserEntity"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.entity.BookingEntity"
+            android:exported="false" />
+        <activity
+            android:name=".data.local.entity.TrainEntity"
+            android:exported="false" />
+        <activity
+            android:name=".di.modules.AppModule"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.auth.LoginViewModel"
+            android:exported="false" />
+        <activity
+            android:name=".data.repository.TrainRepositoryImpl"
+            android:exported="false" />
+        <activity
+            android:name=".data.repository.AuthRepositoryImpl"
+            android:exported="false" />
+        <activity
+            android:name=".domain.usecase.SearchTrainsUseCase"
+            android:exported="false" />
+        <activity
+            android:name=".domain.usecase.LoginUseCase"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.Passenger"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.Booking"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.TrainClass"
+            android:exported="false" />
+        <activity
+            android:name=".utils.Result"
+            android:exported="false" />
+        <activity
+            android:name=".domain.repository.BookingRepository"
+            android:exported="false" />
+        <activity
+            android:name=".domain.repository.TrainRepository"
+            android:exported="false" />
+        <activity
+            android:name=".domain.repository.AuthRepository"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.enums.BookingStatus"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.enums.BerthPreference"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.enums.Gender"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.Gender"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.Train"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.User"
+            android:exported="false" />
+        <activity
+            android:name=".domain.model.enums.User"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.base.BaseFragment"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.base.BaseViewModel"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.base.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.booking.BookTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.train.TrainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.main.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.features.splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

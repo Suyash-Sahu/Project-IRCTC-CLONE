@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_blue">#FF0B3D91</color>
+    <color name="secondary_blue">#FF1E88E5</color>
+    <color name="accent_orange">#FFFF6D00</color>
+    <color name="gray">#FF757575</color>
+    <color name="orange_primary">#FF5722</color>
+    <color name="orange_light">#FF8A65</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="irctc_orange">#FF9933</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primary">@color/irctc_orange</color>
+    <color name="background_light">#F5F5F5</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+</resources>

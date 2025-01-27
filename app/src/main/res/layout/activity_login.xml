@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/irctc_orange">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <!-- Header Logos -->
+    <ImageView
+        android:id="@+id/ivIrctcLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/irctc_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivAppLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/app_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivIrctcLogo" />
+
+    <!-- Sign In Text -->
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SIGN IN"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivIrctcLogo" />
+
+    <!-- White Card Background -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSignIn">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="24dp">
+
+        <!-- Username -->
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="User Name"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/etUsername" />
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@null"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/btnTogglePassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+        <ImageButton
+            android:id="@+id/btnTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_visibility_off"
+            app:layout_constraintBottom_toBottomOf="@id/etPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/etPassword" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/etPassword" />
+
+        <!-- Forgot Account and Register -->
+        <TextView
+            android:id="@+id/tvForgotAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Forgot Account Details?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register User?"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvForgotAccount" />
+
+        <!-- OTP Checkbox -->
+        <CheckBox
+            android:id="@+id/cbLoginWithOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Login and booking with OTP"
+            android:textColor="@color/black"
+            android:buttonTint="@color/colorAccent"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvForgotAccount" />
+
+        <!-- Captcha Section -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCaptcha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/orange_primary"
+            app:cardCornerRadius="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cbLoginWithOtp">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="8dp"
+              android:text="T==DM"
+              android:textColor="@color/white"
+              android:textSize="16sp"
+              android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/btnRefreshCaptcha"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_refresh"
+            app:layout_constraintBottom_toBottomOf="@id/cvCaptcha"
+            app:layout_constraintStart_toEndOf="@id/cvCaptcha"
+            app:layout_constraintTop_toTopOf="@id/cvCaptcha"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etCaptcha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:hint="Enter the Captcha"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/cvCaptcha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnRefreshCaptcha"
+            app:layout_constraintTop_toTopOf="@id/cvCaptcha" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnRefreshCaptcha"
+            app:layout_constraintTop_toBottomOf="@id/etCaptcha" />
+
+        <!-- Login Button -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fabLogin"
+            android:layout_width="53dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Login"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider3"
+            app:layout_constraintVertical_bias="0.0"
+            app:tint="@color/white" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Agent Login Button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAgentLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView">
+
+      <TextView
+          android:id="@+id/tvAgentLoginText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:padding="16dp"
+          android:text="AGENT LOGIN USING OTP"
+          android:textColor="@color/colorAccent"
+          android:textSize="16sp"
+          android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- More Apps Section -->
+    <TextView
+        android:id="@+id/tvMoreApps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="More Apps of IRCTC"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvAgentLogin" />
+
+    <!-- Apps Grid -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAppsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/white"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvMoreApps">
+
+      <GridLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:columnCount="3"
+          android:background="@color/white"
+          android:padding="16dp">
+
+        <!-- First Row Apps -->
+        <!-- Air Ticket -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivAirTicket"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_flight"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="AIR TICKET"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bus -->
+        <androidx.cardview.widget.CardView
+            style="@style/AppGridItemCard">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivBus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_bus"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="BUS"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Hotel -->
+        <androidx.cardview.widget.CardView
+            style="@style/AppGridItemCard">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivHotel"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_hotel"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="HOTEL"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Second Row Apps -->
+        <!-- UTS Ticket -->
+        <androidx.cardview.widget.CardView
+            style="@style/AppGridItemCard"
+            android:layout_marginTop="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivUtsTicket"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_train"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="UTS TICKET"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tourism -->
+        <androidx.cardview.widget.CardView
+            style="@style/AppGridItemCard"
+            android:layout_marginTop="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivTourism"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_tourism"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="IRCTC TOURISM"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Food Order -->
+        <androidx.cardview.widget.CardView
+            style="@style/AppGridItemCard"
+            android:layout_marginTop="16dp">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="12dp"
+              android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/ivFoodOrder"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_food"
+                android:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="ORDER FOOD IN TRAIN"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+          </LinearLayout>
+        </androidx.cardview.widget.CardView>
+      </GridLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/llFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cvAppsGrid"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+      <TextView
+          android:id="@+id/tvBack"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="BACK"
+          android:textColor="@color/white"
+          android:textSize="14sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/tvUserGuide"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="USER GUIDE"
+          android:textColor="@color/white"
+          android:textSize="14sp"
+          android:textStyle="bold" />
+    </LinearLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
