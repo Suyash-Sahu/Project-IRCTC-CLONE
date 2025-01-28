@@ -2,11 +2,14 @@ package com.example.irctcclone.presentation.features.mybookings
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.irctcclone.R
 import com.example.irctcclone.databinding.ItemBookingBinding
-import com.example.irctcclone.presentation.features.mybookings.models.Booking
+import com.example.irctcclone.domain.model.Booking
+import com.example.irctcclone.domain.model.BookingStatus
 
 class BookingAdapter : ListAdapter<Booking, BookingAdapter.ViewHolder>(BookingDiffCallback()) {
 
@@ -29,16 +32,15 @@ class BookingAdapter : ListAdapter<Booking, BookingAdapter.ViewHolder>(BookingDi
             binding.apply {
                 tvBookingTrainName.text = item.trainName
                 tvBookingTrainNumber.text = item.trainNumber
-                tvBookingDate.text = item.date
-                tvBookingStatus.text = item.status
+                tvBookingDate.text = item.journeyDate
+                tvBookingStatus.text = item.status.toString()
 
                 // Set text color based on status
                 val statusColor = when (item.status) {
-                    "Confirmed" -> R.color.success
-                    "Waitlisted" -> R.color.warning
-                    "Cancelled" -> R.color.error
-                    "Completed" -> R.color.text_secondary
-                    else -> R.color.text_secondary
+                    BookingStatus.CONFIRMED -> R.color.success
+                    BookingStatus.WAITLISTED, BookingStatus.RAC -> R.color.warning
+                    BookingStatus.CANCELLED -> R.color.error
+                    BookingStatus.PENDING -> R.color.text_secondary
                 }
                 tvBookingStatus.setTextColor(ContextCompat.getColor(root.context, statusColor))
             }
@@ -48,7 +50,7 @@ class BookingAdapter : ListAdapter<Booking, BookingAdapter.ViewHolder>(BookingDi
 
 class BookingDiffCallback : DiffUtil.ItemCallback<Booking>() {
     override fun areItemsTheSame(oldItem: Booking, newItem: Booking): Boolean {
-        return oldItem.trainNumber == newItem.trainNumber
+        return oldItem.pnr == newItem.pnr
     }
 
     override fun areContentsTheSame(oldItem: Booking, newItem: Booking): Boolean {

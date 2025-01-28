@@ -1,21 +1,23 @@
 package com.example.irctcclone.presentation.features.pnr
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.irctcclone.R
+import com.example.irctcclone.databinding.ActivityPnrstatusBinding
+import com.example.irctcclone.domain.model.PassengerStatus
 
 class PNRStatusActivity : AppCompatActivity() {
 
-    private lateinit var binding: activity_pnrstatusBinding
+    private lateinit var binding: ActivityPnrstatusBinding
     private lateinit var recentPnrAdapter: RecentPNRAdapter
     private lateinit var passengerStatusAdapter: PassengerStatusAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = activity_pnrstatusBinding.inflate(layoutInflater)
+        binding = ActivityPnrstatusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupToolbar()
@@ -51,62 +53,44 @@ class PNRStatusActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnGetStatus.setOnClickListener {
-            val pnrNumber = binding.etPnrNumber.text.toString()
-            if (validatePnr(pnrNumber)) {
-                fetchPnrStatus(pnrNumber)
+            val pnr = binding.etPnr.text.toString()
+            if (pnr.isNotEmpty()) {
+                fetchPnrStatus(pnr)
+            } else {
+                Toast.makeText(this, "Please enter PNR number", Toast.LENGTH_SHORT).show()
             }
-        }
-    }
-
-    private fun validatePnr(pnr: String): Boolean {
-        return when {
-            pnr.isEmpty() -> {
-                binding.etPnrNumber.error = "Please enter PNR number"
-                false
-            }
-            pnr.length != 10 -> {
-                binding.etPnrNumber.error = "PNR should be 10 digits"
-                false
-            }
-            else -> true
         }
     }
 
     private fun fetchPnrStatus(pnr: String) {
         // TODO: Implement API call to fetch PNR status
         // For now, showing dummy data
-        showPnrStatus(
-            PnrStatus(
-                pnrNumber = pnr,
-                trainNumber = "12345",
-                trainName = "RAJDHANI EXPRESS",
-                journeyDate = "27 Jan 2025",
-                fromStation = "NDLS",
-                toStation = "MMCT",
-                passengers = listOf(
-                    PassengerStatus("Passenger 1", "CNF/B3/34", "CNF"),
-                    PassengerStatus("Passenger 2", "CNF/B3/35", "CNF")
-                )
+        val dummyPassengers = listOf(
+            PassengerStatus(
+                name = "John Doe",
+                age = 30,
+                gender = "Male",
+                seatNumber = "B1 23",
+                status = "Confirmed"
+            ),
+            PassengerStatus(
+                name = "Jane Doe",
+                age = 28,
+                gender = "Female",
+                seatNumber = "B1 24",
+                status = "Confirmed"
             )
         )
-    }
-
-    private fun showPnrStatus(status: PnrStatus) {
-        binding.apply {
-            cardPnrStatus.visibility = View.VISIBLE
-            tvTrainNumber.text = "${status.trainNumber} - ${status.trainName}"
-            tvJourneyDate.text = "Journey Date: ${status.journeyDate}"
-            tvFromStation.text = status.fromStation
-            tvToStation.text = status.toStation
-            passengerStatusAdapter.submitList(status.passengers)
-        }
+        passengerStatusAdapter.submitList(dummyPassengers)
     }
 
     private fun deleteRecentPnr(pnr: String) {
         // TODO: Implement delete from local storage
+        Toast.makeText(this, "PNR $pnr deleted", Toast.LENGTH_SHORT).show()
     }
 
     private fun sharePnrStatus() {
         // TODO: Implement share functionality
+        Toast.makeText(this, "Share functionality coming soon", Toast.LENGTH_SHORT).show()
     }
 }

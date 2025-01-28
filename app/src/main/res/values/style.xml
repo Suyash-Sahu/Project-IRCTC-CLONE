@@ -27,8 +27,4 @@
         <item name="android:lines">2</item>
     </style>
 
-    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/primary</item>
-        <item name="hintTextColor">@color/primary</item>
-    </style>
 </resources>

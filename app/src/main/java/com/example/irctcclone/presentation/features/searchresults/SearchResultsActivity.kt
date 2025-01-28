@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.irctcclone.R
 import com.example.irctcclone.databinding.ActivitySearchResultsBinding
-import com.example.irctcclone.presentation.features.searchresults.models.Train
+import com.example.irctcclone.domain.model.Train
 
 class SearchResultsActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class SearchResultsActivity : AppCompatActivity() {
 
         setupToolbar()
         setupRecyclerView()
-        fetchSearchResults()
+        loadTrains()
     }
 
     private fun setupToolbar() {
@@ -29,18 +29,40 @@ class SearchResultsActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         trainAdapter = TrainAdapter()
-        binding.rvTrainList.apply {
+        binding.rvTrains.apply {
             layoutManager = LinearLayoutManager(this@SearchResultsActivity)
             adapter = trainAdapter
         }
     }
 
-    private fun fetchSearchResults() {
-        // TODO: Implement API call to fetch search results
-        // For now, showing dummy data
+    private fun loadTrains() {
+        // TODO: Implement API call to load trains
+        // For now, using dummy data
         val dummyTrains = listOf(
-            Train("Rajdhani Express", "12345", "10:00 AM - 06:00 PM", "8h", "Available"),
-            Train("Shatabdi Express", "12001", "07:00 AM - 01:00 PM", "6h", "Waitlist")
+            Train(
+                trainNumber = "12345",
+                trainName = "Rajdhani Express",
+                source = "Delhi",
+                destination = "Mumbai",
+                departureTime = "16:00",
+                arrivalTime = "08:00",
+                duration = "16h",
+                distance = "1384 km",
+                availableClasses = listOf("1A", "2A", "3A", "SL"),
+                runsOn = listOf("Mon", "Wed", "Fri")
+            ),
+            Train(
+                trainNumber = "12001",
+                trainName = "Shatabdi Express",
+                source = "Mumbai",
+                destination = "Pune",
+                departureTime = "06:00",
+                arrivalTime = "10:00",
+                duration = "4h",
+                distance = "192 km",
+                availableClasses = listOf("CC", "EC"),
+                runsOn = listOf("Daily")
+            )
         )
         trainAdapter.submitList(dummyTrains)
     }

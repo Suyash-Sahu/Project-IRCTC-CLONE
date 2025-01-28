@@ -1,150 +1,137 @@
 package com.example.irctcclone.presentation.features.train
 
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.irctcclone.R
-import com.example.irctcclone.presentation.features.main.MainActivity
+import com.example.irctcclone.databinding.ActivityTrainBinding
+import com.example.irctcclone.presentation.features.booking.BookTicketActivity
+import com.example.irctcclone.presentation.features.mybookings.MyBookingsActivity
+import com.example.irctcclone.presentation.features.pnr.PNRStatusActivity
+import com.example.irctcclone.presentation.features.trainstatus.TrainStatusActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TrainActivity : AppCompatActivity() {
-    private lateinit var toolbar: Toolbar
-    private lateinit var backButton: ImageButton
-    private lateinit var bottomNavigation: BottomNavigationView
-    private lateinit var infoText: TextView
+
+    private lateinit var binding: ActivityTrainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_train)
+        binding = ActivityTrainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        initializeViews()
         setupToolbar()
         setupClickListeners()
         setupBottomNavigation()
     }
 
-    private fun initializeViews() {
-        toolbar = findViewById(R.id.toolbar)
-        backButton = findViewById(R.id.backButton)
-        bottomNavigation = findViewById(R.id.bottomNavigation)
-        infoText = findViewById(R.id.infoText)
-    }
-
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.toolbar.apply {
+            title = ""
+            setSupportActionBar(this)
+        }
+        
+        binding.backButton.setOnClickListener { finish() }
+        binding.infoText.text = getString(R.string.app_name)
     }
 
     private fun setupClickListeners() {
-        // Back button
-        backButton.setOnClickListener {
-            finish()
-        }
-
         // First Row
-        findViewById<View>(R.id.bookTicketLayout).setOnClickListener {
+        binding.bookTicketLayout.setOnClickListener {
             handleServiceClick("Book Ticket") {
                 // Launch BookTicketActivity when implemented
                 // startActivity(Intent(this, BookTicketActivity::class.java))
             }
         }
 
-        findViewById<View>(R.id.myBookingsLayout).setOnClickListener {
-            handleServiceClick("My Bookings") {
-                // Launch MyBookingsActivity when implemented
-            }
+        binding.myBookingsLayout.setOnClickListener {
+            startActivity(Intent(this, MyBookingsActivity::class.java))
         }
 
-        findViewById<View>(R.id.pnrEnquiryLayout).setOnClickListener {
-            handleServiceClick("PNR Enquiry") {
-                // Launch PNR Enquiry functionality
-            }
+        binding.pnrEnquiryLayout.setOnClickListener {
+            startActivity(Intent(this, PNRStatusActivity::class.java))
         }
 
-        findViewById<View>(R.id.lastTransactionLayout).setOnClickListener {
+        binding.lastTransactionLayout.setOnClickListener {
             handleServiceClick("Last Transaction") {
                 // Show last transaction details
             }
         }
 
-        findViewById<View>(R.id.upcomingJourneyLayout).setOnClickListener {
+        binding.upcomingJourneyLayout.setOnClickListener {
             handleServiceClick("Upcoming Journey") {
                 // Show upcoming journey details
             }
         }
 
         // Second Row
-        findViewById<View>(R.id.cancelTicketLayout).setOnClickListener {
+        binding.cancelTicketLayout.setOnClickListener {
             handleServiceClick("Cancel Ticket") {
                 // Launch ticket cancellation flow
             }
         }
 
-        findViewById<View>(R.id.fileTDRLayout).setOnClickListener {
+        binding.fileTDRLayout.setOnClickListener {
             handleServiceClick("File TDR") {
                 // Launch TDR filing process
             }
         }
 
-        findViewById<View>(R.id.refundHistoryLayout).setOnClickListener {
+        binding.refundHistoryLayout.setOnClickListener {
             handleServiceClick("Refund History") {
                 // Show refund history
             }
         }
 
-        findViewById<View>(R.id.faqLayout).setOnClickListener {
+        binding.faqLayout.setOnClickListener {
             handleServiceClick("FAQ") {
                 // Show FAQ section
             }
         }
 
-        findViewById<View>(R.id.eWalletLayout).setOnClickListener {
+        binding.eWalletLayout.setOnClickListener {
             handleServiceClick("IRCTC E-Wallet") {
                 // Show E-Wallet details
             }
         }
 
         // Third Row
-        findViewById<View>(R.id.chartVacancyLayout).setOnClickListener {
+        binding.chartVacancyLayout.setOnClickListener {
             handleServiceClick("Chart Vacancy") {
                 // Show chart vacancy
             }
         }
 
-        findViewById<View>(R.id.trainScheduleLayout).setOnClickListener {
+        binding.trainScheduleLayout.setOnClickListener {
             handleServiceClick("Train Schedule") {
                 // Show train schedule
             }
         }
 
-        findViewById<View>(R.id.trackTrainLayout).setOnClickListener {
+        binding.trackTrainLayout.setOnClickListener {
             handleServiceClick("Track Your Train") {
                 // Launch train tracking
             }
         }
 
-        findViewById<View>(R.id.askDishaLayout).setOnClickListener {
+        binding.askDishaLayout.setOnClickListener {
             handleServiceClick("Ask Disha 2.0") {
                 // Launch Ask Disha chatbot
             }
         }
 
-        findViewById<View>(R.id.delhiMetroLayout).setOnClickListener {
+        binding.delhiMetroLayout.setOnClickListener {
             handleServiceClick("Delhi Metro") {
                 // Show Delhi Metro information
             }
         }
 
         // Information text click
-        infoText.setOnClickListener {
+        binding.infoText.setOnClickListener {
             try {
                 val url = "https://www.indianrail.gov.in"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -155,16 +142,8 @@ class TrainActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleServiceClick(serviceName: String, action: () -> Unit) {
-        try {
-            action.invoke()
-        } catch (e: Exception) {
-            Toast.makeText(this, "$serviceName coming soon!", Toast.LENGTH_SHORT).show()
-        }
-    }
-
     private fun setupBottomNavigation() {
-        bottomNavigation.setOnItemSelectedListener { item ->
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     if (this.javaClass != MainActivity::class.java) {
@@ -201,6 +180,14 @@ class TrainActivity : AppCompatActivity() {
                     false
                 }
             }
+        }
+    }
+
+    private fun handleServiceClick(serviceName: String, action: () -> Unit) {
+        try {
+            action.invoke()
+        } catch (e: Exception) {
+            Toast.makeText(this, "$serviceName coming soon!", Toast.LENGTH_SHORT).show()
         }
     }
 

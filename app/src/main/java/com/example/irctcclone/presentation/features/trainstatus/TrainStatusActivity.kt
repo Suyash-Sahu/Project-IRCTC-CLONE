@@ -3,7 +3,6 @@ package com.example.irctcclone.presentation.features.trainstatus
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.irctcclone.R
 import com.example.irctcclone.databinding.ActivityTrainStatusBinding
